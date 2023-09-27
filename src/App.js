@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { listenEvent } from "@vt/utils";
 
 export const App = () => {
   const [tasks, updateTasks] = useState([]);
 
   useEffect(() => {
-    window.addEventListener("@vt/react-route/todo/add-task", (event) => {
+    listenEvent("@vt/react-route/todo/add-task", (event) => {
       console.log(event);
       updateTasks((oldTasks) => [...oldTasks, event.detail]);
     });
@@ -12,7 +13,7 @@ export const App = () => {
 
   return (
     <>
-      <h1>@mc/react-parcel</h1>
+      <h1>@vt/react-parcel</h1>
       <table>
         <thead>
           <tr>
